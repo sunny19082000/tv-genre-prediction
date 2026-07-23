@@ -54,39 +54,12 @@ are made, so those decisions only ever see training data. The split
 seed is saved inside the model file so `evaluate.py` can reconstruct
 the exact same, untouched test set later.
 
-## Project structure
-
-```
-tv-genre-prediction/
-├── data/
-│   └── tv-shows.csv
-├── src/
-│   ├── data_loader.py   # load the raw data (csv or xlsx)
-│   ├── preprocess.py    # cleaning, feature engineering, target, sklearn pipeline
-│   ├── model.py          # model factory (logistic_regression / random_forest)
-│   ├── train.py           # CLI: train a model, save it
-│   ├── evaluate.py        # CLI: evaluate a saved model on the test split
-│   └── explain.py         # CLI: feature importance / coefficient plots
-├── outputs/
-│   ├── model_logistic_regression.pkl
-│   ├── model_random_forest.pkl
-│   └── plots/             # confusion matrices, feature importance charts
-├── Genre_Prediction_Walkthrough.ipynb  # end-to-end notebook (see below)
-├── build_notebook.py                    # regenerates the notebook from source
-├── Model_Evaluation_Report.docx
-├── requirements.txt
-└── README.md
-```
-
 ## Notebook walkthrough
 
 `Genre_Prediction_Walkthrough.ipynb` runs the whole pipeline top to
 bottom in one place — load data, EDA, feature engineering, both models
 trained, evaluated, and explained, with every table and plot shown
-inline. It doesn't contain any new logic: every cell imports and calls
-the same functions that live in `src/`, so the notebook and the CLI
-scripts (`train.py` / `evaluate.py` / `explain.py`) stay in sync.
-
+inline. 
 Open it in VS Code (with the Jupyter extension) or `jupyter lab`. The
 first code cell sets `DATA_PATH` to where the dataset lives on disk —
 update that one line if you move the project or data file, then
